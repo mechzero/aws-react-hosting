@@ -27,6 +27,16 @@ const App = () => {
         SetMovies(data.Search);
     }
 
+    const handleSearch = () => {
+        searchMovies(searchTerm);
+      };
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+          handleSearch();
+        }
+      };
+
     useEffect(() =>{
         searchMovies('Batman');
     }, []);
@@ -40,6 +50,7 @@ const App = () => {
                 placeholder= "Search for movies"
                 value = {searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={handleKeyPress} 
                 />
                 <img
                 src={SearchIcon}
